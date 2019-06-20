@@ -21,23 +21,23 @@ var loadApp = function() {
       }
   };
   // Create and send a GET request
-  xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts');
+  xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/?limit=20');
   xhr.send();
 
   // Render markup with returned API data
   function renderAppMarkup(data) {
 
     // Create 3 random numbers and store them in an array
-    var randomArray = [];
+    randomArray = [];
     for (var i = 0; i < 3; i++) {
-      var randomIndex = Math.floor(Math.random() * 100);
+      var randomIndex = Math.floor(Math.random() * 20);
       randomArray.push(randomIndex);
     }
     // Set up HTML string
     var html = '';
-    // Add markup for each of the 3 randomly selected posts
+    // Add markup for each of the 3 randomly selected Pokemon
     randomArray.forEach(function(index) {
-      html += '<h1>' + data[index].title + '</h1>';
+      html += '<h1>' + data.results[index].name + '</h1>';
     });
     // Inject HTML into the DOM
     app.innerHTML = html;
