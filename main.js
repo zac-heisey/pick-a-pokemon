@@ -1,7 +1,7 @@
 // Get app container
 var app = document.querySelector('#app');
 
-// Load application
+// Create function to load app
 var loadApp = function() {
 
   // Set up XHR request
@@ -21,7 +21,7 @@ var loadApp = function() {
       }
   };
   // Create and send a GET request
-  xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/?limit=20');
+  xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/?limit=100');
   xhr.send();
 
   // Render markup with returned API data
@@ -30,14 +30,18 @@ var loadApp = function() {
     // Create 3 random numbers and store them in an array
     randomArray = [];
     for (var i = 0; i < 3; i++) {
-      var randomIndex = Math.floor(Math.random() * 20);
+      var randomIndex = Math.floor(Math.random() * 100);
       randomArray.push(randomIndex);
     }
     // Set up HTML string
     var html = '';
     // Add markup for each of the 3 randomly selected Pokemon
     randomArray.forEach(function(index) {
-      html += '<h1>' + data.results[index].name + '</h1>';
+      html +=
+        '<div class="rendered-pokemon">' +
+          '<h1>' + data.results[index].name.toUpperCase() + '</h1>' +
+          '<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + (index + 1) + '.png">' +
+        '</div>';
     });
     // Inject HTML into the DOM
     app.innerHTML = html;
@@ -47,4 +51,4 @@ var loadApp = function() {
 } // end of loadApp function
 
 // Run loadApp function on page load
-window.addEventListener('load', loadApp, false);
+loadApp();
