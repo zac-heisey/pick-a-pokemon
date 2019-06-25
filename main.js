@@ -16,7 +16,7 @@ var loadApp = function() {
           renderAppMarkup(JSON.parse(xhr.responseText));
       } else {
           // This will run when it's not
-          app.innerHTML = 'The request failed! Please try again later';
+          app.innerHTML = 'Sorry, we are having trouble getting data from the PokéAPI. Please try again later.';
           console.log(xhr);
       }
   };
