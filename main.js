@@ -38,8 +38,8 @@ var loadApp = function() {
     // Add markup for each of the 3 randomly selected Pokemon
     randomArray.forEach(function(index) {
       html +=
-        '<div class="rendered-pokemon">' +
-          '<h1>' + data.results[index].name.toUpperCase() + '</h1>' +
+        '<div class="pokemon-cards">' +
+          '<h2>' + data.results[index].name.toUpperCase() + '</h2>' +
           '<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + (index + 1) + '.png">' +
         '</div>';
     });

@@ -16,18 +16,50 @@ h1, h2, h3, h4, h5, h6 {
 body {
   background-color: #FF0000;
   font-family: 'VT323', monospace;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+header > img {
+  width: 30%;
+  min-width: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+header > h1 {
+  margin: 10px 0;
+  text-align: center;
 }
 
 #app {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  height: 100vh;
 }
 
-.rendered-pokemon {
-  width: 33%;
+#app:hover .pokemon-cards {
+  opacity: 0.5;
+}
+
+#app .pokemon-cards:hover {
+  opacity: 1;
+}
+
+.pokemon-cards {
+  width: 25%;
   text-align: center;
+  border: 10px solid yellow;
+  border-radius: 20px;
+  background-color: goldenrod;
+  transition: transform .6s;
+}
+
+.pokemon-cards:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
 }
 
 img {
