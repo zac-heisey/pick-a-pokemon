@@ -13,12 +13,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /*=== App Styles ===*/
 
+body {
+  background-color: #FF0000;
+  font-family: 'VT323', monospace;
+}
+
 #app {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 100vh;
-  font-family: monospace;
 }
 
 .rendered-pokemon {
