@@ -49,6 +49,7 @@ header > h1 {
 
 .pokemon-cards {
   width: 25%;
+  padding: 10px;
   text-align: center;
   border: 10px solid yellow;
   border-radius: 20px;
@@ -64,4 +65,24 @@ header > h1 {
 
 img {
   width: 200px;
+}
+
+/*=== Media Queries ===*/
+
+@media (max-width: 875px) {
+
+  body {
+    justify-content: space-between;
+  }
+
+  #app {
+    flex-direction: column;
+  }
+
+  .pokemon-cards {
+    width: 75%;
+    max-width: 285px;
+    margin: 20px auto;
+  }
+
 }
