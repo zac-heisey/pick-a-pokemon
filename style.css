@@ -22,7 +22,7 @@ body {
   justify-content: space-around;
 }
 
-header > img {
+header img {
   width: 30%;
   min-width: 250px;
   display: block;
