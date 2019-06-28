@@ -47,7 +47,7 @@ header > h1 {
   opacity: 1;
 }
 
-.pokemon-cards {
+.pokemon-cards, #pokemon-card {
   width: 25%;
   padding: 10px;
   text-align: center;
@@ -61,6 +61,10 @@ header > h1 {
   -ms-transform: scale(1.1); /* IE 9 */
   -webkit-transform: scale(1.1); /* Safari 3-8 */
   transform: scale(1.1);
+}
+
+#pokemon-card ul {
+  list-style: none;
 }
 
 img {
