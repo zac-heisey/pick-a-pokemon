@@ -41,39 +41,57 @@ var loadApp = function() {
           console.log(xhr);
       }
   };
-  // Create and send a GET request
-  xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/?limit=100');
-  xhr.send();
+  // Create and send a GET request based on URL params
+  if (params.name === undefined) {
+    xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/?limit=100');
+    xhr.send();
+  } else {
+    xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/' + params.id);
+    xhr.send();
+  }
 
   // Render markup with returned API data
   function renderAppMarkup(data) {
 
     // Set up HTML string
     var html = '';
+
+    // Create 3 random numbers and store them in an array
+    var randomArray = [];
+    for (var i = 0; i < 3; i++) {
+      var randomIndex = Math.floor(Math.random() * 100);
+      randomArray.push(randomIndex);
+    }
+
     // Check for URL parameters
     if (params.name === undefined) {
-      // Create 3 random numbers and store them in an array
-      randomArray = [];
-      for (var i = 0; i < 3; i++) {
-        var randomIndex = Math.floor(Math.random() * 100);
-        randomArray.push(randomIndex);
-      }
       // Add markup for each of the 3 randomly selected Pokemon
-      randomArray.forEach(function(index) {
-        html +=
+      app.innerHTML = randomArray.map(function(index) {
+        html =
           '<div class="pokemon-cards">' +
             '<a href="?name=' + data.results[index].name + '&id=' + (index + 1) + '">' +
               '<h2>' + data.results[index].name.toUpperCase() + '</h2>' +
               '<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + (index + 1) + '.png">' +
             '</a>' +
           '</div>';
-      });
+        return html;
+      }).join('');
     } else {
-      // Render individual Pokemon card info based on URL param data (name, id)
+      // Add markup for individual Pokemon card info based on URL params
+      app.innerHTML =
+        '<div id="pokemon-card">' +
+          '<h2>' + params.name.toUpperCase() + '</h2>' +
+          '<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + params.id + '.png">' +
+          '<h3>Base Experience: ' + data.base_experience + '</h3>' +
+          '<h3>Skills:</h3>' +
+          '<ul>' +
+            data.abilities.map(function(index) {
+              html = '<li>' + index.ability.name + '</li>';
+              return html;
+            }).join('');
+          '</ul>' +
+        '</div>';
     }
-
-    // Inject HTML into the DOM
-    app.innerHTML = html;
 
   } // End of renderAppMarkup function
 
